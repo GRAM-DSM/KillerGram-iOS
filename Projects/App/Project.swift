@@ -26,7 +26,12 @@ let targets: [Target] = [
         sources: ["Sources/**"],
         resources: ["Resources/**"],
         scripts: scripts,
-        dependencies: [],
+        dependencies: ModulePaths.Feature.allCases.map { TargetDependency.feature(target: $0) }
+        + ModulePaths.Domain.allCases.map { TargetDependency.domain(target: $0) }
+        + [
+            .core(target: .CoreKit),
+            .SPM.Needle
+        ],
         settings: .settings(base: env.baseSetting)
     )
 ]
