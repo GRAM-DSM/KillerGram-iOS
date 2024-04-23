@@ -1,42 +1,36 @@
 import BaseFeature
 import SwiftUI
-
 import DesignSystem
+import SplashFeatureInterface
+import ViewUtil
 
 struct RootView: View {
-//    @EnvironmentObject var appState: AppState
-//    private let signinFactory: any SigninFactory
-//    private let splashFactory: any SplashFactory
-//    private let mainFactory: any MainFactory
-//
-//    public init(
-//        signinFactory: any SigninFactory,
-//        splashFactory: any SplashFactory,
-//        mainFactory: any MainFactory
-//    ) {
-//        self.signinFactory = signinFactory
-//        self.splashFactory = splashFactory
-//        self.mainFactory = mainFactory
-//    }
+    @EnvironmentObject var appState: AppState
+    private let splashFactory: any SplashFactory
+
+    public init(
+        splashFactory: any SplashFactory
+    ) {
+        self.splashFactory = splashFactory
+    }
 
     var body: some View {
         ZStack {
-//            switch appState.sceneFlow {
-//            case .auth:
-//                signinFactory.makeView().eraseToAnyView()
-//                    .environmentObject(appState)
-//
-//            case .main:
-//                mainFactory.makeView().eraseToAnyView()
-//                    .environmentObject(appState)
-//
-//            case .splash:
-//                splashFactory.makeView().eraseToAnyView()
-//                    .environmentObject(appState)
-//            }
-            Text("RootView")
+            switch appState.sceneFlow {
+            case .auth:
+                EmptyView()
+                    .environmentObject(appState)
+
+            case .main:
+                EmptyView()
+                    .environmentObject(appState)
+
+            case .splash:
+                splashFactory.makeView().eraseToAnyView()
+                    .environmentObject(appState)
+            }
         }
-//        .animation(.easeInOut, value: appState.sceneFlow)
+        .animation(.easeInOut, value: appState.sceneFlow)
         .transition(.opacity.animation(.easeInOut))
     }
 }
