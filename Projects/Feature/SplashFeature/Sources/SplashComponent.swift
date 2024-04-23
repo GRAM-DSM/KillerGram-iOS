@@ -1,6 +1,7 @@
 import SwiftUI
 import NeedleFoundation
 import SplashFeatureInterface
+
 public protocol SplashDependency: Dependency {
 }
 

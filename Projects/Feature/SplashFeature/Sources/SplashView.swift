@@ -20,11 +20,13 @@ struct SplashView: View {
         .frame(maxWidth: .infinity, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .background(Color.System.background.ignoresSafeArea())
         .onAppear {
-            //                viewModel.onAppear {
-            //                    appState.sceneFlow = .main
-            //                } onError: { _ in
-            //                    appState.sceneFlow = .auth
-            //                }
+//            viewModel.onAppear {
+//                appState.sceneFlow = .main
+//            } onError: { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                appState.sceneFlow = .auth
+            }
+//            }
         }
     }
 }
