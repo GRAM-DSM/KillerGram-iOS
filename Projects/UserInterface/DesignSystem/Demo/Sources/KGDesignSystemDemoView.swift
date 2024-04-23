@@ -19,7 +19,8 @@ struct DesignSystemPlaygroundView: View {
         ("Typograpy", AnyView(TypograpyDemoView())),
         ("Button", AnyView(ButtonDemoView())),
         ("TextField", AnyView(TextFieldDemoView())),
-        ("CheckBox", AnyView(CheckBoxDemoView()))
+        ("CheckBox", AnyView(CheckBoxDemoView())),
+        ("Toggle", AnyView(ToggleDemoView()))
     ]
 
     var body: some View {
