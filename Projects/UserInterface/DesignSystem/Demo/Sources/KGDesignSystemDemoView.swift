@@ -18,7 +18,8 @@ struct DesignSystemPlaygroundView: View {
     let list: [(String, AnyView)] = [
         ("Typograpy", AnyView(TypograpyDemoView())),
         ("Button", AnyView(ButtonDemoView())),
-        ("TextField", AnyView(TextFieldDemoView()))
+        ("TextField", AnyView(TextFieldDemoView())),
+        ("CheckBox", AnyView(CheckBoxDemoView()))
     ]
 
     var body: some View {
