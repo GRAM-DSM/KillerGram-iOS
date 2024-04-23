@@ -24,6 +24,8 @@ extension ModulePaths: MicroTargetPathConvertable {
 
 public extension ModulePaths {
     enum Feature: String, MicroTargetPathConvertable {
+        case SigninFeature
+        case SplashFeature
         case RootFeature
         case BaseFeature
     }
@@ -43,6 +45,7 @@ public extension ModulePaths {
 
 public extension ModulePaths {
     enum Shared: String, MicroTargetPathConvertable {
+        case ViewUtil
         case GlobalThirdPartyLibrary
     }
 }
