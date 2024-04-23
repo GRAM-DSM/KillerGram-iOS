@@ -20,6 +20,7 @@ public enum KGFontWeight {
 }
 
 public enum KGFontStyle: Hashable {
+    // swiftlint: disable identifier_name
     case h1
     case h2
     case h3
@@ -27,6 +28,7 @@ public enum KGFontStyle: Hashable {
     case m2
     case m3
     case label
+    // swiftlint: enable identifier_name
 
     var size: CGFloat {
         switch self {
