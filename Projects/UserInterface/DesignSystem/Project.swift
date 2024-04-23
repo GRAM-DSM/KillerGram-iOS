@@ -13,12 +13,9 @@ let project = Project.module(
         ),
         .demo(
             module: .userInterface(.DesignSystem),
-            spec: .init(
-                scripts: scripts,
-                dependencies: [
-                    .userInterface(target: .DesignSystem)
-                ]
-            )
+            dependencies: [
+                .userInterface(target: .DesignSystem)
+            ]
         )
     ]
 )

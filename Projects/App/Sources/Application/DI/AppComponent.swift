@@ -2,6 +2,8 @@ import NeedleFoundation
 import SwiftUI
 import RootFeature
 import RootFeatureInterface
+import SplashFeature
+import SplashFeatureInterface
 
 public final class AppComponent: BootstrapComponent {
 //    private let _keychain: any Keychain
@@ -26,4 +28,7 @@ public final class AppComponent: BootstrapComponent {
 }
 
 public extension AppComponent {
+    var splashFactory: any SplashFactory {
+        SplashComponent(parent: self)
+    }
 }
