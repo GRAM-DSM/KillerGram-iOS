@@ -9,7 +9,7 @@ let project = Project.module(
             .shared(target: .GlobalThirdPartyLibrary)
         ]),
         .tests(module: .domain(.BaseDomain), dependencies: [
-            .domain(target: .BaseDomain, type: .interface)
+            .domain(target: .BaseDomain)
         ])
     ]
 )

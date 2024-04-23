@@ -24,6 +24,7 @@ extension ModulePaths: MicroTargetPathConvertable {
 
 public extension ModulePaths {
     enum Feature: String, MicroTargetPathConvertable {
+        case RootFeature
         case BaseFeature
     }
 }
@@ -69,3 +70,6 @@ public extension MicroTargetPathConvertable where Self: RawRepresentable {
         "\(self.rawValue)\(type.rawValue)"
     }
 }
+
+extension ModulePaths.Feature: CaseIterable {}
+extension ModulePaths.Domain: CaseIterable {}

@@ -15,10 +15,10 @@ public extension GenerateEnvironment {
     var scripts: [TargetScript] {
         switch self {
         case .ci, .cd:
-            return []
+            return [.needle]
 
         case .dev:
-            return [.swiftLint]
+            return [.swiftLint, .needle]
         }
     }
 }
