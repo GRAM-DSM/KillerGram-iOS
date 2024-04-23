@@ -67,7 +67,6 @@ public struct KGTextField: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 24)
-        .background(.gray)
         .animation(.easeIn(duration: 0.2), value: isErrorAndNotEmpty)
         .animation(.easeIn(duration: 0.2), value: isFocused)
     }
