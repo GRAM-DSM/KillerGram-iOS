@@ -43,12 +43,11 @@ public struct NavigationBarModifier: ViewModifier {
                         }
                     }
                 }
-                .frame(height: 68)
+                .frame(height: 64)
                 .padding(.horizontal, 12)
 
                 Text(navigationTitle)
                     .kgFont(.m2, weight: .semiBold, color: .Grays.white)
-                    .padding(.vertical, 10)
                     .frame(maxWidth: .infinity)
             }
             .background(Color.System.background.ignoresSafeArea(edges: .top))
@@ -61,7 +60,7 @@ public struct NavigationBarModifier: ViewModifier {
 }
 
 public extension View {
-    func setNavigationBar(
+    func navigationBar(
         navigationTitle: String,
         hasBackButton: Bool = false,
         rightIcon: (Icons, () -> Void)? = nil
@@ -75,7 +74,7 @@ public extension View {
         )
     }
 
-    func setNavigationBackButton(
+    func navigationBackButton(
         navigationTitle: String = ""
     ) -> some View {
         modifier(
