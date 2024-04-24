@@ -1,6 +1,8 @@
 import DesignSystem
 import SwiftUI
 import BaseFeature
+import ViewUtil
+import SignupFeatureInterface
 
 struct SigninView: View {
     private enum FocusField {
@@ -10,10 +12,14 @@ struct SigninView: View {
     @FocusState private var focusField: FocusField?
     @StateObject var viewModel: SigninViewModel
 
+    private let signupEmailVerifyFactory: any SignupEmailVerifyFactory
+
     init(
-        viewModel: SigninViewModel
+        viewModel: SigninViewModel,
+        signupEmailVerifyFactory: any SignupEmailVerifyFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.signupEmailVerifyFactory = signupEmailVerifyFactory
     }
 
     var body: some View {
@@ -49,8 +55,10 @@ struct SigninView: View {
                 )
 
                 HStack(spacing: 16) {
-                    Text("회원가입")
-                        .kgFont(.label, weight: .regular, color: .Grays.gray700)
+                    Button(action: viewModel.signupButtonDidTap) {
+                        Text("회원가입")
+                            .kgFont(.label, weight: .regular, color: .Grays.gray700)
+                    }
 
                     Color.Grays.gray700
                         .frame(width: 1, height: 16)
@@ -62,5 +70,6 @@ struct SigninView: View {
 
             Spacer()
         }
+        .navigate(to: signupEmailVerifyFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
     }
 }
