@@ -1,9 +1,5 @@
 import SwiftUI
 
-protocol KGFontable {
-    var font: Font { get }
-}
-
 public enum KGFontWeight {
     case semiBold
     case regular
@@ -48,11 +44,15 @@ public enum KGFontStyle: Hashable {
             14
         }
     }
-}
 
-// MARK: - FontableSize
-extension KGFontable where Self: RawRepresentable, Self.RawValue == CGFloat {
-    var size: CGFloat {
-        self.rawValue
+    var lineHeight: CGFloat {
+        switch self {
+        case .h1, .h2:
+            1.20
+        case .h3:
+            1.30
+        case .m1, .m2, .m3, .label:
+            1.50
+        }
     }
 }

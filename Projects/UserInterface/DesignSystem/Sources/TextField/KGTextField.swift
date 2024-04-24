@@ -3,11 +3,11 @@ import SwiftUI
 public struct KGTextField: View {
 //    @Environment(\.isEnabled) private var isEnabled: Bool
     var title: String
-    var label: String
+    var placeholder: String
     @Binding var text: String
     var isError: Bool
-    var description: String
     var errorMessage: String
+    var description: String
     var onCommit: () -> Void
     @FocusState var isFocused: Bool
     private var isErrorAndNotEmpty: Bool {
@@ -15,15 +15,15 @@ public struct KGTextField: View {
     }
 
     public init(
-        _ label: String = "",
+        _ placeholder: String = "",
         text: Binding<String>,
         title: String = "",
         isError: Bool = false,
-        description: String = "",
         errorMessage: String = "",
+        description: String = "",
         onCommit: @escaping () -> Void = {}
     ) {
-        self.label = label
+        self.placeholder = placeholder
         _text = text
         self.title = title
         self.isError = isError
@@ -40,7 +40,7 @@ public struct KGTextField: View {
             }
 
             ZStack(alignment: .leading) {
-                Text(label)
+                Text(placeholder)
                     .kgFont(.m3, weight: .regular, color: .Grays.gray800)
                     .opacity(text.isEmpty ? 1 : 0)
 
@@ -49,7 +49,8 @@ public struct KGTextField: View {
                     .focused($isFocused)
                     .onSubmit(onCommit)
             }
-            .padding(16)
+            .padding(.horizontal, 16)
+            .frame(height: 56)
             .background(Color.Grays.gray1000)
             .clipCornerRadius(8)
             .overlay {
@@ -67,6 +68,7 @@ public struct KGTextField: View {
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 24)
+        .animation(.easeIn(duration: 0.2), value: isError)
         .animation(.easeIn(duration: 0.2), value: isErrorAndNotEmpty)
         .animation(.easeIn(duration: 0.2), value: isFocused)
     }
