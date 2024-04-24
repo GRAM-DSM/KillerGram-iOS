@@ -19,23 +19,25 @@ struct RootView: View {
     }
 
     var body: some View {
-        ZStack {
-            switch appState.sceneFlow {
-            case .auth:
-                signinFactory.makeView().eraseToAnyView()
-                    .environmentObject(appState)
+        NavigationView {
+            ZStack {
+                switch appState.sceneFlow {
+                case .auth:
+                    signinFactory.makeView().eraseToAnyView()
+                        .environmentObject(appState)
 
-            case .main:
-                EmptyView()
-                    .environmentObject(appState)
+                case .main:
+                    EmptyView()
+                        .environmentObject(appState)
 
-            case .splash:
-                splashFactory.makeView().eraseToAnyView()
-                    .environmentObject(appState)
+                case .splash:
+                    splashFactory.makeView().eraseToAnyView()
+                        .environmentObject(appState)
+                }
             }
+            .background(Color.System.background.ignoresSafeArea())
+            .animation(.easeInOut, value: appState.sceneFlow)
+            .transition(.opacity.animation(.easeInOut))
         }
-        .background(Color.System.background.ignoresSafeArea())
-        .animation(.easeInOut, value: appState.sceneFlow)
-        .transition(.opacity.animation(.easeInOut))
     }
 }
