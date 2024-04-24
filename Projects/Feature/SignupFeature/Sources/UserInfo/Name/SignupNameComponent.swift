@@ -1,6 +1,6 @@
 import SwiftUI
 import NeedleFoundation
-import SignupNameFeatureInterface
+import SignupFeatureInterface
 
 public protocol SignupNameDependency: Dependency {
 }

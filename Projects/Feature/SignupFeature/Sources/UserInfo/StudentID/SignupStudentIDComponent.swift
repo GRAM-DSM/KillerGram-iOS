@@ -1,6 +1,6 @@
 import SwiftUI
 import NeedleFoundation
-import SignupStudentIDFeatureInterface
+import SignupFeatureInterface
 
 public protocol SignupStudentIDDependency: Dependency {
 }
