@@ -6,7 +6,7 @@ import SigninFeatureInterface
 import ViewUtil
 
 struct RootView: View {
-    @EnvironmentObject var appState: AppState
+    @AppState var appState
     private let splashFactory: any SplashFactory
     private let signinFactory: any SigninFactory
 

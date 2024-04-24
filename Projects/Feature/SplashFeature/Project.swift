@@ -8,7 +8,9 @@ let project = Project.module(
         .interface(module: .feature(.SplashFeature)),
         .implements(module: .feature(.SplashFeature), dependencies: [
             .feature(target: .SplashFeature, type: .interface),
-            .feature(target: .BaseFeature)
+            .feature(target: .BaseFeature),
+            .feature(target: .SigninFeature, type: .interface),
+//            .feature(target: .MainFeature, type: .interface)
         ]),
         .tests(module: .feature(.SplashFeature), dependencies: [
             .feature(target: .SplashFeature)
