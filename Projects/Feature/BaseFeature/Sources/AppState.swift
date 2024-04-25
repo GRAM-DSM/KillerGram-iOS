@@ -1,9 +1,27 @@
-import Foundation
+import SwiftUI
 
-public final class AppState: ObservableObject {
-    @Published public var sceneFlow: SceneFlow
+@propertyWrapper
+public struct AppState: DynamicProperty {
+    @EnvironmentObject private var object: AppStateProvider
 
-    public init(sceneFlow: SceneFlow) {
-        self.sceneFlow = sceneFlow
+    public var wrappedValue: AppStateProvider {
+        object
     }
+
+    public init() { }
+}
+
+public final class AppStateProvider: ObservableObject {
+    @Published public var sceneFlow: SceneFlow
+    @Published public var rule: RuleExample
+
+    public init(sceneFlow: SceneFlow, rule: RuleExample) {
+        self.sceneFlow = sceneFlow
+        self.rule = rule
+    }
+}
+
+public enum RuleExample {
+    case student
+    case manager
 }

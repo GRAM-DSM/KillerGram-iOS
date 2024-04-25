@@ -5,7 +5,7 @@ import ViewUtil
 
 @main
 struct KillerGramApp: App {
-    @StateObject var appState = AppState(sceneFlow: .splash)
+    @ObservedObject var appState = AppStateProvider(sceneFlow: .splash, rule: .student)
 
     init() {
         DesignSystemFontFamily.registerAllCustomFonts()

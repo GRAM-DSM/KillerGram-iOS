@@ -3,6 +3,7 @@ import DesignSystem
 
 struct TextFieldDemoView: View {
     @State var text1: String = ""
+    @State var text2: String = ""
     @State var isError1: Bool = false
     var body: some View {
         VStack {
@@ -12,6 +13,12 @@ struct TextFieldDemoView: View {
 //                title: "제목",
                 isError: isError1,
 //                description: "설명입니다.",
+                errorMessage: "에러입니다"
+            )
+
+            VerifyCodeTextField(
+                $text2,
+                isError: isError1,
                 errorMessage: "에러입니다"
             )
 

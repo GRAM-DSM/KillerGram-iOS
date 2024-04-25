@@ -2,22 +2,16 @@ import SwiftUI
 
 // MARK: - Usage
 extension Button {
-    func kgStyle(_ style: KGButtonStyle.Style, isEditing: Bool) -> some View {
-        self.buttonStyle(KGButtonStyle(style: style, isEditing: isEditing))
+    func kgStyle(isEditing: Bool) -> some View {
+        self.buttonStyle(KGButtonStyle(isEditing: isEditing))
     }
 }
 
 public struct KGButtonStyle: ButtonStyle {
-    public enum Style {
-        case green
-        case black
-    }
-
-    let style: Style
     let isEditing: Bool
 
     public func makeBody(configuration: Configuration) -> some View {
-        AnyView(KGButton(configuration: configuration, style: style, isEditing: isEditing))
+        AnyView(KGButton(configuration: configuration, isEditing: isEditing))
     }
 }
 
@@ -25,7 +19,6 @@ public struct KGButtonStyle: ButtonStyle {
 extension KGButtonStyle {
     struct KGButton: View {
         let configuration: ButtonStyle.Configuration
-        let style: Style
         let isEditing: Bool
         @Environment(\.isEnabled) private var isEnabled: Bool
 
@@ -34,47 +27,32 @@ extension KGButtonStyle {
                 .kgFont(
                     .m3,
                     weight: .semiBold,
-                    color: configuration.isPressed ? style.pressedForeground : style.foreground
+                    color: isEnabled ?
+                    configuration.isPressed ?
+                    pressedForeground :
+                        enableForeground :
+                        disabledForeground
                 )
                 .padding(.vertical, 16)
                 .frame(maxWidth: .infinity)
-                .background(configuration.isPressed ? style.pressedBackground : style.background)
+                .background(
+                    isEnabled ?
+                    configuration.isPressed ?
+                    pressedBackground :
+                        enableBackground :
+                        disabledBackground
+                )
                 .clipCornerRadius(isEditing ? 0 : 8)
         }
     }
 }
 
 // Color Setting
-private extension KGButtonStyle.Style {
-    var background: Color {
-        switch self {
-        case .green:
-            Color.Greens.main
-        case .black:
-            Color.Grays.gray1000
-        }
-    }
-
-    var foreground: Color {
-        switch self {
-        case .green:
-            Color.Greens.secondary
-        case .black:
-            Color.Grays.gray700
-        }
-    }
-
-    var pressedBackground: Color {
-        switch self {
-        default:
-            Color.Greens.secondary
-        }
-    }
-
-    var pressedForeground: Color {
-        switch self {
-        default:
-            Color.Grays.gray100
-        }
-    }
+private extension KGButtonStyle {
+    static var enableBackground: Color { .Greens.main }
+    static var enableForeground: Color { .Greens.secondary }
+    static var pressedBackground: Color { .Greens.secondary }
+    static var pressedForeground: Color { .Grays.gray100 }
+    static var disabledBackground: Color { .Grays.gray1000 }
+    static var disabledForeground: Color { .Grays.gray700 }
 }

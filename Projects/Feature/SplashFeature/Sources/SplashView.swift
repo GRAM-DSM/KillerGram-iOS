@@ -4,7 +4,7 @@ import BaseFeature
 
 struct SplashView: View {
     @StateObject var viewModel: SplashViewModel
-    @EnvironmentObject var appState: AppState
+    @AppState var appState
 
     init(
         viewModel: SplashViewModel
