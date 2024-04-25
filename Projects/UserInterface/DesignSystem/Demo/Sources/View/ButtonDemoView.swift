@@ -4,8 +4,7 @@ import DesignSystem
 struct ButtonDemoView: View {
     var body: some View {
         VStack {
-            KGButton(text: "버튼", style: .black)
-            KGButton(text: "버튼", style: .green)
+            KGButton(text: "버튼")
         }
     }
 }
