@@ -8,6 +8,7 @@ public struct KGTextField: View {
     var isError: Bool
     var errorMessage: String
     var description: String
+    var isSecure: Bool
     var onCommit: () -> Void
     @FocusState var isFocused: Bool
     private var isErrorAndNotEmpty: Bool {
@@ -21,6 +22,7 @@ public struct KGTextField: View {
         isError: Bool = false,
         errorMessage: String = "",
         description: String = "",
+        isSecure: Bool = false,
         onCommit: @escaping () -> Void = {}
     ) {
         self.placeholder = placeholder
@@ -29,6 +31,7 @@ public struct KGTextField: View {
         self.isError = isError
         self.description = description
         self.errorMessage = errorMessage
+        self.isSecure = isSecure
         self.onCommit = onCommit
     }
 
@@ -44,10 +47,16 @@ public struct KGTextField: View {
                     .kgFont(.m3, weight: .regular, color: .Grays.gray800)
                     .opacity(text.isEmpty ? 1 : 0)
 
-                TextField("", text: $text)
-                    .kgFont(.m3, weight: .regular, color: .Grays.white)
-                    .focused($isFocused)
-                    .onSubmit(onCommit)
+                Group {
+                    if isSecure {
+                        SecureField("", text: $text)
+                    } else {
+                        TextField("", text: $text)
+                    }
+                }
+                .kgFont(.m3, weight: .regular, color: .Grays.white)
+                .focused($isFocused)
+                .onSubmit(onCommit)
             }
             .padding(.horizontal, 16)
             .frame(height: 56)
@@ -56,7 +65,7 @@ public struct KGTextField: View {
             .overlay {
                 RoundedRectangle(cornerRadius: 8)
                     .strokeBorder(
-                        isErrorAndNotEmpty ? Color.System.red : .clear,
+                        isErrorAndNotEmpty ? Color.System.red : isFocused ? .Greens.main : .clear,
                         lineWidth: 1
                     )
             }

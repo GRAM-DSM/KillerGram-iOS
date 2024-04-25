@@ -61,7 +61,7 @@ public struct NavigationBarModifier: ViewModifier {
 
 public extension View {
     func navigationBar(
-        navigationTitle: String,
+        navigationTitle: String = "",
         hasBackButton: Bool = false,
         rightIcon: (Icons, () -> Void)? = nil
     ) -> some View {
