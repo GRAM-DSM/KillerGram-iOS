@@ -1,22 +1,21 @@
 import SwiftUI
-import DesignSystem
 
-enum PhysicalLevel {
+public enum PhysicalLevel {
     case high
     case middle
     case low
 }
 
-struct LevelCheckCellView: View {
+public struct LevelCheckCellView: View {
     @Binding var selectedLevel: PhysicalLevel
     let level: PhysicalLevel
 
-    init(_ level: PhysicalLevel, selectedLevel: Binding<PhysicalLevel>) {
+    public init(_ level: PhysicalLevel, selectedLevel: Binding<PhysicalLevel>) {
         _selectedLevel = selectedLevel
         self.level = level
     }
 
-    var body: some View {
+    public var body: some View {
         Button {
             self.selectedLevel = level
         } label: {

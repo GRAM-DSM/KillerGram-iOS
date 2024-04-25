@@ -1,5 +1,6 @@
 import BaseFeature
 import Combine
+import DesignSystem
 
 final class SignupCheckLevelViewModel: BaseViewModel {
     @Published var selectedLevel: PhysicalLevel = .high
