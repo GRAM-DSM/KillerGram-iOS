@@ -36,26 +36,30 @@ private func factoryace9f05f51d68f4c0677e3b0c44298fc1c149afb(_ component: Needle
     return SplashDependencye0cb7136f2ec3edfd60aProvider()
 }
 private class SignupPasswordDependency778bf5389a70d7df6152Provider: SignupPasswordDependency {
-
-
-    init() {
-
+    var signupNameFactory: any SignupNameFactory {
+        return appComponent.signupNameFactory
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->SignupPasswordComponent
-private func factorye93d1d56840ff97c674ae3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return SignupPasswordDependency778bf5389a70d7df6152Provider()
+private func factorye93d1d56840ff97c674af47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return SignupPasswordDependency778bf5389a70d7df6152Provider(appComponent: parent1(component) as! AppComponent)
 }
 private class SignupEmailAuthCodeVerifyDependencyaf9da1ebf0e9e5f1b708Provider: SignupEmailAuthCodeVerifyDependency {
-
-
-    init() {
-
+    var signupPasswordFactory: any SignupPasswordFactory {
+        return appComponent.signupPasswordFactory
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->SignupEmailAuthCodeVerifyComponent
-private func factoryb06be35aa893adde971be3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return SignupEmailAuthCodeVerifyDependencyaf9da1ebf0e9e5f1b708Provider()
+private func factoryb06be35aa893adde971bf47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return SignupEmailAuthCodeVerifyDependencyaf9da1ebf0e9e5f1b708Provider(appComponent: parent1(component) as! AppComponent)
 }
 private class SignupStudentIDDependencyc62f548e51245f5bf42dProvider: SignupStudentIDDependency {
 
@@ -91,15 +95,17 @@ private func factory5b23127e837152346fdae3b0c44298fc1c149afb(_ component: Needle
     return SignupCheckLevelDependencye4ec84c7d38354a454aeProvider()
 }
 private class SignupNameDependency860534ba64c054146b7bProvider: SignupNameDependency {
-
-
-    init() {
-
+    var signupStudentIDFactory: any SignupStudentIDFactory {
+        return appComponent.signupStudentIDFactory
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->SignupNameComponent
-private func factory71e8fa7f4327b1e25ed0e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return SignupNameDependency860534ba64c054146b7bProvider()
+private func factory71e8fa7f4327b1e25ed0f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return SignupNameDependency860534ba64c054146b7bProvider(appComponent: parent1(component) as! AppComponent)
 }
 private class SignupEmailVerifyDependencyf9d372ac752ee19b78caProvider: SignupEmailVerifyDependency {
     var signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory {
@@ -166,12 +172,12 @@ extension SplashComponent: Registration {
 }
 extension SignupPasswordComponent: Registration {
     public func registerItems() {
-
+        keyPathToName[\SignupPasswordDependency.signupNameFactory] = "signupNameFactory-any SignupNameFactory"
     }
 }
 extension SignupEmailAuthCodeVerifyComponent: Registration {
     public func registerItems() {
-
+        keyPathToName[\SignupEmailAuthCodeVerifyDependency.signupPasswordFactory] = "signupPasswordFactory-any SignupPasswordFactory"
     }
 }
 extension SignupStudentIDComponent: Registration {
@@ -191,7 +197,7 @@ extension SignupCheckLevelComponent: Registration {
 }
 extension SignupNameComponent: Registration {
     public func registerItems() {
-
+        keyPathToName[\SignupNameDependency.signupStudentIDFactory] = "signupStudentIDFactory-any SignupStudentIDFactory"
     }
 }
 extension SignupEmailVerifyComponent: Registration {
@@ -228,12 +234,12 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
 @inline(never) private func register1() {
     registerProviderFactory("^->AppComponent", factoryEmptyDependencyProvider)
     registerProviderFactory("^->AppComponent->SplashComponent", factoryace9f05f51d68f4c0677e3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->SignupPasswordComponent", factorye93d1d56840ff97c674ae3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->SignupEmailAuthCodeVerifyComponent", factoryb06be35aa893adde971be3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->SignupPasswordComponent", factorye93d1d56840ff97c674af47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->SignupEmailAuthCodeVerifyComponent", factoryb06be35aa893adde971bf47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SignupStudentIDComponent", factorycca12bec445b4f4f6de7e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SignupGenderComponent", factory997eaa831d16af15eee5e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SignupCheckLevelComponent", factory5b23127e837152346fdae3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->SignupNameComponent", factory71e8fa7f4327b1e25ed0e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->SignupNameComponent", factory71e8fa7f4327b1e25ed0f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SignupEmailVerifyComponent", factory3b1904c76335d70151ebf47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debccf47b58f8f304c97af4d5)
