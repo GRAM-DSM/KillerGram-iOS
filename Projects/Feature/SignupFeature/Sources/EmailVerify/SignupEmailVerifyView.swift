@@ -12,6 +12,7 @@ struct SignupEmailVerifyView: View {
     @StateObject var viewModel: SignupEmailVerifyViewModel
 
     private let signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory
+
     init(
         viewModel: SignupEmailVerifyViewModel,
         signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory
@@ -35,13 +36,18 @@ struct SignupEmailVerifyView: View {
                 errorMessage: viewModel.errorMessage,
                 onCommit: viewModel.nextButtonDidTap
             )
+            .textContentType(.emailAddress)
+            .keyboardType(.emailAddress)
             .focused($focusField, equals: .email)
 
             Spacer()
-
-            KGButton(text: "다음", isEditing: focusField != nil, action: viewModel.nextButtonDidTap)
-                .disabled(viewModel.email.isEmpty)
         }
+        .bottomButton(
+            text: "다음",
+            isEditing: focusField != nil,
+            isDisabled: viewModel.email.isEmpty,
+            action: viewModel.nextButtonDidTap
+        )
         .navigationBackButton()
         .kgBackground()
         .hideKeyboardWhenTap()
