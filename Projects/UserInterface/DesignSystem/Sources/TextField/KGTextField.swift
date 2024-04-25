@@ -72,7 +72,11 @@ public struct KGTextField: View {
 
             if !description.isEmpty || isErrorAndNotEmpty {
                 Text(isErrorAndNotEmpty ? errorMessage : description)
-                    .kgFont(.label, weight: .regular, color: isErrorAndNotEmpty ? .System.red : .Grays.gray800)
+                    .kgFont(
+                        .label,
+                        weight: .regular,
+                        color: isErrorAndNotEmpty ? .System.red : .Grays.gray800
+                    )
             }
         }
         .padding(.vertical, 8)
