@@ -4,21 +4,21 @@ import BaseFeature
 import ViewUtil
 import SignupFeatureInterface
 
-struct SignupEmailVerifyView: View {
+struct SignupEmailView: View {
     private enum FocusField {
         case email
     }
     @FocusState private var focusField: FocusField?
-    @StateObject var viewModel: SignupEmailVerifyViewModel
+    @StateObject var viewModel: SignupEmailViewModel
 
-    private let signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory
+    private let signupVerifyAuthCode: any SignupVerifyAuthCodeFactory
 
     init(
-        viewModel: SignupEmailVerifyViewModel,
-        signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory
+        viewModel: SignupEmailViewModel,
+        signupVerifyAuthCode: any SignupVerifyAuthCodeFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.signupEmailAuthCodeVerifyFactory = signupEmailAuthCodeVerifyFactory
+        self.signupVerifyAuthCode = signupVerifyAuthCode
     }
 
     var body: some View {
@@ -52,8 +52,8 @@ struct SignupEmailVerifyView: View {
         .kgBackground()
         .hideKeyboardWhenTap()
         .navigate(
-            to: signupEmailAuthCodeVerifyFactory.makeView().eraseToAnyView(),
-            when: $viewModel.isNavigatedToEmailAuthCodeVerify
+            to: signupVerifyAuthCode.makeView().eraseToAnyView(),
+            when: $viewModel.isNavigatedToVerifyAuthCode
         )
     }
 }

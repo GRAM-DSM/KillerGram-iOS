@@ -1,6 +1,6 @@
 import SwiftUI
 
-public protocol SignupEmailAuthCodeVerifyFactory {
+public protocol SignupUserInfoFlowFactory {
     associatedtype SomeView: View
     func makeView() -> SomeView
 }

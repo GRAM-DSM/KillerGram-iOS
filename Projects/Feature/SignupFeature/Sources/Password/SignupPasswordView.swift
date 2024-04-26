@@ -12,14 +12,14 @@ struct SignupPasswordView: View {
     @FocusState private var focusField: FocusField?
     @StateObject var viewModel: SignupPasswordViewModel
 
-    private let signupNameFactory: any SignupNameFactory
+    private let signupUserInfoFlowFactory: any SignupUserInfoFlowFactory
 
     init(
         viewModel: SignupPasswordViewModel,
-        signupNameFactory: any SignupNameFactory
+        signupUserInfoFlowFactory: any SignupUserInfoFlowFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.signupNameFactory = signupNameFactory
+        self.signupUserInfoFlowFactory = signupUserInfoFlowFactory
     }
 
     var body: some View {
@@ -66,7 +66,7 @@ struct SignupPasswordView: View {
         .kgBackground()
         .hideKeyboardWhenTap()
         .navigate(
-            to: signupNameFactory.makeView().eraseToAnyView(),
+            to: signupUserInfoFlowFactory.makeView().eraseToAnyView(),
             when: $viewModel.isNavigatedToName
         )
     }

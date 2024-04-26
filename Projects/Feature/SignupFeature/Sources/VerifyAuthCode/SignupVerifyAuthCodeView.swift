@@ -4,17 +4,17 @@ import BaseFeature
 import ViewUtil
 import SignupFeatureInterface
 
-struct SignupEmailAuthCodeVerifyView: View {
+struct SignupVerifyAuthCodeView: View {
     private enum FocusField {
         case authCode
     }
     @FocusState private var focusField: FocusField?
-    @StateObject var viewModel: SignupEmailAuthCodeVerifyViewModel
+    @StateObject var viewModel: SignupVerifyAuthCodeViewModel
 
     private let signupPasswordFactory: any SignupPasswordFactory
 
     init(
-        viewModel: SignupEmailAuthCodeVerifyViewModel,
+        viewModel: SignupVerifyAuthCodeViewModel,
         signupPasswordFactory: any SignupPasswordFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -52,7 +52,7 @@ struct SignupEmailAuthCodeVerifyView: View {
             Spacer()
         }
         .bottomButton(
-            text: "다음",
+            text: "인증",
             isEditing: focusField != nil,
             isDisabled: viewModel.authCode.count < 4,
             action: viewModel.nextButtonDidTap

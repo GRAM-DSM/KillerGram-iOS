@@ -39,14 +39,17 @@ public extension AppComponent {
         SigninComponent(parent: self)
     }
     // Signup
-    var signupEmailVerifyFactory: any SignupEmailVerifyFactory {
-        SignupEmailVerifyComponent(parent: self)
+    var signupEmailFactory: any SignupEmailFactory {
+        SignupEmailComponent(parent: self)
     }
-    var signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory {
-        SignupEmailAuthCodeVerifyComponent(parent: self)
+    var signupVerifyAuthCode: any SignupVerifyAuthCodeFactory {
+        SignupVerifyAuthCodeComponent(parent: self)
     }
     var signupPasswordFactory: any SignupPasswordFactory {
         SignupPasswordComponent(parent: self)
+    }
+    var signupUserInfoFlowFactory: any SignupUserInfoFlowFactory {
+        SignupUserInfoFlowComponent(parent: self)
     }
     var signupNameFactory: any SignupNameFactory {
         SignupNameComponent(parent: self)

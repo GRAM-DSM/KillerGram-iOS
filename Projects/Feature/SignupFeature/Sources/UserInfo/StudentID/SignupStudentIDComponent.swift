@@ -7,10 +7,9 @@ public protocol SignupStudentIDDependency: Dependency {
 }
 
 public final class SignupStudentIDComponent: Component<SignupStudentIDDependency>, SignupStudentIDFactory {
-    public func makeView() -> some View {
+    public func makeView(nextViewNavigateAction: @escaping () -> Void) -> some View {
         SignupStudentIDView(
-            viewModel: .init(),
-            signupGenderFactory: dependency.signupGenderFactory
+            viewModel: .init(nextViewNavigateAction: nextViewNavigateAction)
         )
     }
 }

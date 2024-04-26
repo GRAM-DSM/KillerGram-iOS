@@ -11,20 +11,14 @@ struct SignupStudentIDView: View {
     @FocusState private var focusField: FocusField?
     @StateObject var viewModel: SignupStudentIDViewModel
 
-    private let signupGenderFactory: any SignupGenderFactory
-
     init(
-        viewModel: SignupStudentIDViewModel,
-        signupGenderFactory: any SignupGenderFactory
+        viewModel: SignupStudentIDViewModel
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.signupGenderFactory = signupGenderFactory
     }
 
     var body: some View {
         VStack(spacing: 0) {
-            SignupProgressView(step: .studentID)
-
             NavigationTitleView(
                 title: "학번을 입력해주세요",
                 description: "원활한 서비스를 위해 학번을 입력해주세요"
@@ -51,12 +45,7 @@ struct SignupStudentIDView: View {
             isDisabled: viewModel.studentID.isEmpty,
             action: viewModel.nextButtonDidTap
         )
-        .navigationBackButton(navigationTitle: "정보 입력")
         .kgBackground()
         .hideKeyboardWhenTap()
-        .navigate(
-            to: signupGenderFactory.makeView().eraseToAnyView(),
-            when: $viewModel.isNavigatedToGender
-        )
     }
 }

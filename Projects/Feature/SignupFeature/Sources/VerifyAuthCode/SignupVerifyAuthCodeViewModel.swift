@@ -2,7 +2,7 @@ import BaseFeature
 import Foundation
 import Combine
 
-final class SignupEmailAuthCodeVerifyViewModel: BaseViewModel {
+final class SignupVerifyAuthCodeViewModel: BaseViewModel {
     @Published var authCode: String = ""
 
     @Published var isNavigatedToPassword: Bool = false
