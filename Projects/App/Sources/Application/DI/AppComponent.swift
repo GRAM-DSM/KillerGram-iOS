@@ -48,6 +48,9 @@ public extension AppComponent {
     var signupPasswordFactory: any SignupPasswordFactory {
         SignupPasswordComponent(parent: self)
     }
+    var signupUserInfoFlowFactory: any SignupUserInfoFlowFactory {
+        SignupUserInfoFlowComponent(parent: self)
+    }
     var signupNameFactory: any SignupNameFactory {
         SignupNameComponent(parent: self)
     }

@@ -4,9 +4,13 @@ import Combine
 final class SignupGenderViewModel: BaseViewModel {
     @Published var selectedGender: Gender = .woman
 
-    @Published var isNavigatedToLevelCheck: Bool = false
+    private let nextViewNavigateAction: () -> Void
+
+    init(nextViewNavigateAction: @escaping () -> Void) {
+        self.nextViewNavigateAction = nextViewNavigateAction
+    }
 
     func nextButtonDidTap() {
-        self.isNavigatedToLevelCheck = true
+        self.nextViewNavigateAction()
     }
 }

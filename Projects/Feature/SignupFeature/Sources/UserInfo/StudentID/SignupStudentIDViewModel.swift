@@ -4,9 +4,13 @@ import Combine
 final class SignupStudentIDViewModel: BaseViewModel {
     @Published var studentID: String = ""
 
-    @Published var isNavigatedToGender: Bool = false
+    private let nextViewNavigateAction: () -> Void
+
+    init(nextViewNavigateAction: @escaping () -> Void) {
+        self.nextViewNavigateAction = nextViewNavigateAction
+    }
 
     func nextButtonDidTap() {
-        self.isNavigatedToGender = true
+        self.nextViewNavigateAction()
     }
 }

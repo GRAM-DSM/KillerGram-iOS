@@ -32,6 +32,7 @@ struct SignupProgressView: View {
             HStack(spacing: 0) {
                 Color.Greens.secondary
                     .frame(width: 31, height: 12)
+
                 ForEach(1...3, id: \.self) { index in
                     (index < self.step.rawValue ? Color.Greens.secondary : Color.Grays.gray1000)
                         .frame(height: 12)
@@ -41,7 +42,9 @@ struct SignupProgressView: View {
                 Color.Grays.gray1000
                     .frame(width: 31, height: 12)
             }
+            .background(Color.Grays.gray1000)
         }
         .padding(.vertical, 16)
+        .animation(.default, value: step)
     }
 }
