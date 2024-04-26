@@ -25,10 +25,14 @@ extension ModulePaths: MicroTargetPathConvertable {
 public extension ModulePaths {
     enum Feature: String, MicroTargetPathConvertable {
 <<<<<<< HEAD
+<<<<<<< HEAD
         case SignupFeature
 =======
         case MainFeature
 >>>>>>> 8b8d5cd (✨ MainFeature 추가)
+=======
+        case MainFeature
+>>>>>>> 8b8d5cd6a2187113736b925a2cfddd283026de4d
         case SigninFeature
         case SplashFeature
         case RootFeature

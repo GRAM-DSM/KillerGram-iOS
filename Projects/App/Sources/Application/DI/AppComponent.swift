@@ -6,13 +6,10 @@ import SplashFeature
 import SplashFeatureInterface
 import SigninFeature
 import SigninFeatureInterface
-<<<<<<< HEAD
 import SignupFeature
 import SignupFeatureInterface
-=======
 import MainFeature
 import MainFeatureInterface
->>>>>>> 8b8d5cd (✨ MainFeature 추가)
 
 public final class AppComponent: BootstrapComponent {
 //    private let _keychain: any Keychain
@@ -43,7 +40,6 @@ public extension AppComponent {
     var signinFactory: any SigninFactory {
         SigninComponent(parent: self)
     }
-<<<<<<< HEAD
     // Signup
     var signupEmailVerifyFactory: any SignupEmailVerifyFactory {
         SignupEmailVerifyComponent(parent: self)
@@ -65,9 +61,8 @@ public extension AppComponent {
     }
     var signupCheckLevelFactory: any SignupCheckLevelFactory {
         SignupCheckLevelComponent(parent: self)
-=======
+    }
     var mainFactory: any MainFactory {
         MainComponent(parent: self)
->>>>>>> 8b8d5cd (✨ MainFeature 추가)
     }
 }

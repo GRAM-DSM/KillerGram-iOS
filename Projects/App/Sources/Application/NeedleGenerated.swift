@@ -90,6 +90,7 @@ private func factory997eaa831d16af15eee5f47b58f8f304c97af4d5(_ component: Needle
     return SignupGenderDependency65e2a6565372eb41f4acProvider(appComponent: parent1(component) as! AppComponent)
 }
 private class SignupCheckLevelDependencye4ec84c7d38354a454aeProvider: SignupCheckLevelDependency {
+
 private class MainDependency7c6a5b4738b211b8e155Provider: MainDependency {
 
 

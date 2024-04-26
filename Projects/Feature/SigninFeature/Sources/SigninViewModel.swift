@@ -5,7 +5,6 @@ final class SigninViewModel: BaseViewModel {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var isSuccessToSignin: Bool = false
-
     @Published var isNavigatedToSignup: Bool = false
 
     func signinButtonDidTap() {
@@ -14,5 +13,5 @@ final class SigninViewModel: BaseViewModel {
 
     func signupButtonDidTap() {
         self.isNavigatedToSignup = true
-    }
+
 }
