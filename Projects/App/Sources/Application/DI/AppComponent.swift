@@ -8,6 +8,8 @@ import SigninFeature
 import SigninFeatureInterface
 import SignupFeature
 import SignupFeatureInterface
+import FindPasswordFeature
+import FindPasswordFeatureInterface
 
 public final class AppComponent: BootstrapComponent {
 //    private let _keychain: any Keychain
@@ -62,5 +64,16 @@ public extension AppComponent {
     }
     var signupCheckLevelFactory: any SignupCheckLevelFactory {
         SignupCheckLevelComponent(parent: self)
+    }
+
+    // Find Password
+    var inputEmailFactory: any InputEmailFactory {
+        InputEmailComponent(parent: self)
+    }
+    var verifyAuthCodeFactory: any VerifyAuthCodeFactory {
+        VerifyAuthCodeComponent(parent: self)
+    }
+    var inputNewPasswordFactory: any InputNewPasswordFactory {
+        InputNewPasswordComponent(parent: self)
     }
 }
