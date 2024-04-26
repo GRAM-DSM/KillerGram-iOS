@@ -12,14 +12,14 @@ struct SigninView: View {
     @FocusState private var focusField: FocusField?
     @StateObject var viewModel: SigninViewModel
 
-    private let signupEmailVerifyFactory: any SignupEmailVerifyFactory
+    private let signupEmailFactory: any SignupEmailFactory
 
     init(
         viewModel: SigninViewModel,
-        signupEmailVerifyFactory: any SignupEmailVerifyFactory
+        signupEmailFactory: any SignupEmailFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.signupEmailVerifyFactory = signupEmailVerifyFactory
+        self.signupEmailFactory = signupEmailFactory
     }
 
     var body: some View {
@@ -70,6 +70,6 @@ struct SigninView: View {
 
             Spacer()
         }
-        .navigate(to: signupEmailVerifyFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
+        .navigate(to: signupEmailFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
     }
 }

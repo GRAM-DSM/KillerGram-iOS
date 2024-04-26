@@ -1,6 +1,6 @@
 import SwiftUI
 
-public protocol SignupEmailVerifyFactory {
+public protocol SignupEmailFactory {
     associatedtype SomeView: View
     func makeView() -> SomeView
 }
