@@ -6,6 +6,8 @@ import SplashFeature
 import SplashFeatureInterface
 import SigninFeature
 import SigninFeatureInterface
+import MainFeature
+import MainFeatureInterface
 
 public final class AppComponent: BootstrapComponent {
 //    private let _keychain: any Keychain
@@ -35,5 +37,8 @@ public extension AppComponent {
     }
     var signinFactory: any SigninFactory {
         SigninComponent(parent: self)
+    }
+    var mainFactory: any MainFactory {
+        MainComponent(parent: self)
     }
 }
