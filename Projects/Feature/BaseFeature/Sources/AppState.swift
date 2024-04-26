@@ -14,7 +14,10 @@ public struct AppState: DynamicProperty {
 public final class AppStateProvider: ObservableObject {
     @Published public var sceneFlow: SceneFlow
     @Published public var rule: RuleExample
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8b8d5cd (✨ MainFeature 추가)
     public init(sceneFlow: SceneFlow, rule: RuleExample) {
         self.sceneFlow = sceneFlow
         self.rule = rule

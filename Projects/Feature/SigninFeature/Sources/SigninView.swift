@@ -9,6 +9,7 @@ struct SigninView: View {
         case email
         case password
     }
+    @AppState var appState
     @FocusState private var focusField: FocusField?
     @StateObject var viewModel: SigninViewModel
 
@@ -71,5 +72,8 @@ struct SigninView: View {
             Spacer()
         }
         .navigate(to: signupEmailVerifyFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
+        .onChange(of: viewModel.isSuccessToSignin) { _ in
+            self.appState.sceneFlow = .main
+        }
     }
 }

@@ -3,19 +3,23 @@ import SwiftUI
 import DesignSystem
 import SplashFeatureInterface
 import SigninFeatureInterface
+import MainFeatureInterface
 import ViewUtil
 
 struct RootView: View {
     @AppState var appState
     private let splashFactory: any SplashFactory
     private let signinFactory: any SigninFactory
+    private let mainFactory: any MainFactory
 
     public init(
         splashFactory: any SplashFactory,
-        signinFactory: any SigninFactory
+        signinFactory: any SigninFactory,
+        mainFactory: any MainFactory
     ) {
         self.splashFactory = splashFactory
         self.signinFactory = signinFactory
+        self.mainFactory = mainFactory
     }
 
     var body: some View {
@@ -27,7 +31,7 @@ struct RootView: View {
                         .environmentObject(appState)
 
                 case .main:
-                    EmptyView()
+                    mainFactory.makeView().eraseToAnyView()
                         .environmentObject(appState)
 
                 case .splash:
