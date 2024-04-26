@@ -52,7 +52,7 @@ struct SignupVerifyAuthCodeView: View {
             Spacer()
         }
         .bottomButton(
-            text: "다음",
+            text: "인증",
             isEditing: focusField != nil,
             isDisabled: viewModel.authCode.count < 4,
             action: viewModel.nextButtonDidTap
