@@ -91,8 +91,6 @@ private func factory997eaa831d16af15eee5f47b58f8f304c97af4d5(_ component: Needle
 }
 private class SignupCheckLevelDependencye4ec84c7d38354a454aeProvider: SignupCheckLevelDependency {
 
-private class MainDependency7c6a5b4738b211b8e155Provider: MainDependency {
-
 
     init() {
 
@@ -127,7 +125,14 @@ private class SignupEmailVerifyDependencyf9d372ac752ee19b78caProvider: SignupEma
 /// ^->AppComponent->SignupEmailVerifyComponent
 private func factory3b1904c76335d70151ebf47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
     return SignupEmailVerifyDependencyf9d372ac752ee19b78caProvider(appComponent: parent1(component) as! AppComponent)
+}
+private class MainDependency7c6a5b4738b211b8e155Provider: MainDependency {
 
+
+    init() {
+
+    }
+}
 /// ^->AppComponent->MainComponent
 private func factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
     return MainDependency7c6a5b4738b211b8e155Provider()
@@ -207,7 +212,6 @@ extension SignupGenderComponent: Registration {
     }
 }
 extension SignupCheckLevelComponent: Registration {
-extension MainComponent: Registration {
     public func registerItems() {
 
     }
@@ -220,6 +224,11 @@ extension SignupNameComponent: Registration {
 extension SignupEmailVerifyComponent: Registration {
     public func registerItems() {
         keyPathToName[\SignupEmailVerifyDependency.signupEmailAuthCodeVerifyFactory] = "signupEmailAuthCodeVerifyFactory-any SignupEmailAuthCodeVerifyFactory"
+    }
+}
+extension MainComponent: Registration {
+    public func registerItems() {
+
     }
 }
 extension RootComponent: Registration {

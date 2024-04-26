@@ -13,5 +13,5 @@ final class SigninViewModel: BaseViewModel {
 
     func signupButtonDidTap() {
         self.isNavigatedToSignup = true
-
+    }
 }
