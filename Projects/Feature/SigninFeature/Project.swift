@@ -9,7 +9,8 @@ let project = Project.module(
         .implements(module: .feature(.SigninFeature), dependencies: [
             .feature(target: .SigninFeature, type: .interface),
             .feature(target: .BaseFeature),
-            .feature(target: .SignupFeature, type: .interface)
+            .feature(target: .SignupFeature, type: .interface),
+            .feature(target: .FindPasswordFeature, type: .interface)
         ]),
         .tests(module: .feature(.SigninFeature), dependencies: [
             .feature(target: .SigninFeature)
