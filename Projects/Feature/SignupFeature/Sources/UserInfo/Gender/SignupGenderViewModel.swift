@@ -2,7 +2,7 @@ import BaseFeature
 import Combine
 
 final class SignupGenderViewModel: BaseViewModel {
-//    @Published var studentID: String = ""
+    @Published var selectedGender: Gender = .woman
 
     @Published var isNavigatedToLevelCheck: Bool = false
 

@@ -26,6 +26,13 @@ struct SignupGenderView: View {
                 description: "원활한 서비스를 위해 성별을 알려주세요"
             )
 
+            HStack(spacing: 22) {
+                SelectGenderView(.woman, selectedGender: $viewModel.selectedGender)
+
+                SelectGenderView(.man, selectedGender: $viewModel.selectedGender)
+            }
+            .padding(.horizontal, 24)
+
             Spacer()
         }
         .bottomButton(
