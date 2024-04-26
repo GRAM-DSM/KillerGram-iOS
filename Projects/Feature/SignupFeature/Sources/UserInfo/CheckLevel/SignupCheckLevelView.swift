@@ -36,8 +36,7 @@ struct SignupCheckLevelView: View {
             Spacer()
         }
         .bottomButton(
-            text: "다음",
-//            isDisabled: viewModel.studentID.isEmpty,
+            text: "완료",
             action: viewModel.nextButtonDidTap
         )
         .navigationBackButton(navigationTitle: "정보 입력")
