@@ -1,11 +1,15 @@
 import SwiftUI
-import DesignSystem
 
-struct NavigationTitleView: View {
-    let title: String
-    let description: String
+public struct NavigationTitleView: View {
+    private let title: String
+    private let description: String
 
-    var body: some View {
+    public init(title: String, description: String) {
+        self.title = title
+        self.description = description
+    }
+
+    public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
                 .kgFont(.h3, weight: .semiBold, color: .white)

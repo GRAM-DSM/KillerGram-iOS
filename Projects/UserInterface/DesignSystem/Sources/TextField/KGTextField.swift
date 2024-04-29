@@ -69,6 +69,9 @@ public struct KGTextField: View {
                         lineWidth: 1
                     )
             }
+            .onTapGesture {
+                self.isFocused = true
+            }
 
             if !description.isEmpty || isErrorAndNotEmpty {
                 Text(isErrorAndNotEmpty ? errorMessage : description)

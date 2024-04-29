@@ -1,5 +1,7 @@
 
 
+import FindPasswordFeature
+import FindPasswordFeatureInterface
 import NeedleFoundation
 import RootFeature
 import RootFeatureInterface
@@ -162,6 +164,9 @@ private class SigninDependencyde06a9d0b22764487733Provider: SigninDependency {
     var signupEmailFactory: any SignupEmailFactory {
         return appComponent.signupEmailFactory
     }
+    var inputEmailFactory: any InputEmailFactory {
+        return appComponent.inputEmailFactory
+    }
     private let appComponent: AppComponent
     init(appComponent: AppComponent) {
         self.appComponent = appComponent
@@ -170,6 +175,43 @@ private class SigninDependencyde06a9d0b22764487733Provider: SigninDependency {
 /// ^->AppComponent->SigninComponent
 private func factory2882a056d84a613debccf47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
     return SigninDependencyde06a9d0b22764487733Provider(appComponent: parent1(component) as! AppComponent)
+}
+private class VerifyAuthCodeDependencya16ab19f97e0892b555bProvider: VerifyAuthCodeDependency {
+    var inputNewPasswordFactory: any InputNewPasswordFactory {
+        return appComponent.inputNewPasswordFactory
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
+    }
+}
+/// ^->AppComponent->VerifyAuthCodeComponent
+private func factoryed5ce75de1bf576b84adf47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return VerifyAuthCodeDependencya16ab19f97e0892b555bProvider(appComponent: parent1(component) as! AppComponent)
+}
+private class InputNewPasswordDependency1149e32e41e1cfce6f6dProvider: InputNewPasswordDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->AppComponent->InputNewPasswordComponent
+private func factory27615059458a0576f404e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return InputNewPasswordDependency1149e32e41e1cfce6f6dProvider()
+}
+private class InputEmailDependency4102766a436592066e97Provider: InputEmailDependency {
+    var verifyAuthCodeFactory: any VerifyAuthCodeFactory {
+        return appComponent.verifyAuthCodeFactory
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
+    }
+}
+/// ^->AppComponent->InputEmailComponent
+private func factoryf939e41ba3a1151e88f8f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return InputEmailDependency4102766a436592066e97Provider(appComponent: parent1(component) as! AppComponent)
 }
 
 #else
@@ -186,6 +228,9 @@ extension AppComponent: Registration {
         localTable["signupStudentIDFactory-any SignupStudentIDFactory"] = { [unowned self] in self.signupStudentIDFactory as Any }
         localTable["signupGenderFactory-any SignupGenderFactory"] = { [unowned self] in self.signupGenderFactory as Any }
         localTable["signupCheckLevelFactory-any SignupCheckLevelFactory"] = { [unowned self] in self.signupCheckLevelFactory as Any }
+        localTable["inputEmailFactory-any InputEmailFactory"] = { [unowned self] in self.inputEmailFactory as Any }
+        localTable["verifyAuthCodeFactory-any VerifyAuthCodeFactory"] = { [unowned self] in self.verifyAuthCodeFactory as Any }
+        localTable["inputNewPasswordFactory-any InputNewPasswordFactory"] = { [unowned self] in self.inputNewPasswordFactory as Any }
     }
 }
 extension SplashComponent: Registration {
@@ -245,6 +290,22 @@ extension RootComponent: Registration {
 extension SigninComponent: Registration {
     public func registerItems() {
         keyPathToName[\SigninDependency.signupEmailFactory] = "signupEmailFactory-any SignupEmailFactory"
+        keyPathToName[\SigninDependency.inputEmailFactory] = "inputEmailFactory-any InputEmailFactory"
+    }
+}
+extension VerifyAuthCodeComponent: Registration {
+    public func registerItems() {
+        keyPathToName[\VerifyAuthCodeDependency.inputNewPasswordFactory] = "inputNewPasswordFactory-any InputNewPasswordFactory"
+    }
+}
+extension InputNewPasswordComponent: Registration {
+    public func registerItems() {
+
+    }
+}
+extension InputEmailComponent: Registration {
+    public func registerItems() {
+        keyPathToName[\InputEmailDependency.verifyAuthCodeFactory] = "verifyAuthCodeFactory-any VerifyAuthCodeFactory"
     }
 }
 
@@ -275,6 +336,9 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
     registerProviderFactory("^->AppComponent->SignupEmailComponent", factory4d1ddf658c5970ef6b47f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debccf47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->VerifyAuthCodeComponent", factoryed5ce75de1bf576b84adf47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->InputNewPasswordComponent", factory27615059458a0576f404e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->InputEmailComponent", factoryf939e41ba3a1151e88f8f47b58f8f304c97af4d5)
 }
 #endif
 

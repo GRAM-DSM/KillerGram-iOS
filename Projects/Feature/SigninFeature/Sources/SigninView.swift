@@ -3,6 +3,7 @@ import SwiftUI
 import BaseFeature
 import ViewUtil
 import SignupFeatureInterface
+import FindPasswordFeatureInterface
 
 struct SigninView: View {
     private enum FocusField {
@@ -13,13 +14,16 @@ struct SigninView: View {
     @StateObject var viewModel: SigninViewModel
 
     private let signupEmailFactory: any SignupEmailFactory
+    private let inputEmailFactory: any InputEmailFactory
 
     init(
         viewModel: SigninViewModel,
-        signupEmailFactory: any SignupEmailFactory
+        signupEmailFactory: any SignupEmailFactory,
+        inputEmailFactory: any InputEmailFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.signupEmailFactory = signupEmailFactory
+        self.inputEmailFactory = inputEmailFactory
     }
 
     var body: some View {
@@ -63,13 +67,24 @@ struct SigninView: View {
                     Color.Grays.gray700
                         .frame(width: 1, height: 16)
 
-                    Text("비밀번호 찾기")
-                        .kgFont(.label, weight: .regular, color: .Grays.gray700)
+                    Button(action: viewModel.findPasswordButtonDidTap) {
+                        Text("비밀번호 찾기")
+                            .kgFont(.label, weight: .regular, color: .Grays.gray700)
+                    }
                 }
             }
 
             Spacer()
         }
-        .navigate(to: signupEmailFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
+        .hideKeyboardWhenTap()
+        .navigate(
+            to: signupEmailFactory.makeView().eraseToAnyView(),
+            when: $viewModel.isNavigatedToSignup
+        )
+        .navigate(
+            to: inputEmailFactory.makeView().eraseToAnyView()
+                .environment(\.rootPresentationMode, $viewModel.isNavigatedToFindPassword),
+            when: $viewModel.isNavigatedToFindPassword
+        )
     }
 }
