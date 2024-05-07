@@ -3,6 +3,7 @@ import SwiftUI
 public struct KGImage: View {
     public enum Image {
         case logo
+        case smallLogo
     }
 
     private var image: Image
@@ -26,6 +27,9 @@ public struct KGImage: View {
         switch image {
         case .logo:
             DesignSystemAsset.Images.killerGramLogo.swiftUIImage
+
+        case .smallLogo:
+            DesignSystemAsset.Images.killerGramSmallLogo.swiftUIImage
         }
     }
 }
