@@ -15,7 +15,7 @@ public struct KGFont: ViewModifier {
         content
             .font(weight.pretendardFont.swiftUIFont(size: style.size))
             .lineSpacing(lineHeight * style.lineHeight - lineHeight)
-            .padding(.vertical, (lineHeight * style.lineHeight - lineHeight) / 2)
+            .padding(.vertical, (lineHeight * style.lineHeight - lineHeight) / 4)
     }
 }
 
