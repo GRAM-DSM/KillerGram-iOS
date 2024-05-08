@@ -2,23 +2,24 @@ import DesignSystem
 import SwiftUI
 import BaseFeature
 import ViewUtil
-import SignupFeatureInterface
+import FindPasswordFeatureInterface
 
-struct SignupEmailVerifyView: View {
+struct InputEmailView: View {
     private enum FocusField {
         case email
     }
     @FocusState private var focusField: FocusField?
-    @StateObject var viewModel: SignupEmailVerifyViewModel
+    @StateObject var viewModel: InputEmailViewModel
+    @Environment(\.rootPresentationMode) var rootPresentationMode
 
-    private let signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory
+    private let verifyAuthCodeFactory: any VerifyAuthCodeFactory
 
     init(
-        viewModel: SignupEmailVerifyViewModel,
-        signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory
+        viewModel: InputEmailViewModel,
+        verifyAuthCodeFactory: any VerifyAuthCodeFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.signupEmailAuthCodeVerifyFactory = signupEmailAuthCodeVerifyFactory
+        self.verifyAuthCodeFactory = verifyAuthCodeFactory
     }
 
     var body: some View {
@@ -52,8 +53,9 @@ struct SignupEmailVerifyView: View {
         .kgBackground()
         .hideKeyboardWhenTap()
         .navigate(
-            to: signupEmailAuthCodeVerifyFactory.makeView().eraseToAnyView(),
-            when: $viewModel.isNavigatedToEmailAuthCodeVerify
+            to: verifyAuthCodeFactory.makeView().eraseToAnyView()
+                .environment(\.rootPresentationMode, rootPresentationMode),
+            when: $viewModel.isNavigatedToVerifyAuthCode
         )
     }
 }

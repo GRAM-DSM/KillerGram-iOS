@@ -1,10 +1,9 @@
 import SwiftUI
-import DesignSystem
 
 /// Vstack으로 할 경우 버튼이 잘리는 문제가 발생
 /// ZStack을 사용해 SuperView의 상단으로 띄움
 
-struct BottomButton: ViewModifier {
+private struct BottomButton: ViewModifier {
     let text: String
     let isEditing: Bool
     let isDisabled: Bool

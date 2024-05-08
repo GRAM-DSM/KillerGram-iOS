@@ -6,9 +6,9 @@ public protocol SignupCheckLevelDependency: Dependency {
 }
 
 public final class SignupCheckLevelComponent: Component<SignupCheckLevelDependency>, SignupCheckLevelFactory {
-    public func makeView() -> some View {
+    public func makeView(nextViewNavigateAction: @escaping () -> Void) -> some View {
         SignupCheckLevelView(
-            viewModel: .init()
+            viewModel: .init(nextViewNavigateAction: nextViewNavigateAction)
         )
     }
 }

@@ -2,14 +2,14 @@ import SwiftUI
 import NeedleFoundation
 import SignupFeatureInterface
 
-public protocol SignupEmailAuthCodeVerifyDependency: Dependency {
+public protocol SignupVerifyAuthCodeDependency: Dependency {
     var signupPasswordFactory: any SignupPasswordFactory { get }
 }
 
-public final class SignupEmailAuthCodeVerifyComponent: Component<SignupEmailAuthCodeVerifyDependency>,
-                                                       SignupEmailAuthCodeVerifyFactory {
+public final class SignupVerifyAuthCodeComponent: Component<SignupVerifyAuthCodeDependency>,
+                                                  SignupVerifyAuthCodeFactory {
     public func makeView() -> some View {
-        SignupEmailAuthCodeVerifyView(
+        SignupVerifyAuthCodeView(
             viewModel: .init(),
             signupPasswordFactory: dependency.signupPasswordFactory
         )

@@ -24,7 +24,7 @@ public struct LevelCheckCellView: View {
                     .kgFont(.m1, weight: .semiBold, color: .Grays.white)
 
                 Text(level.description)
-                    .kgFont(.m3, weight: .regular, color: .Grays.gray500)
+                    .kgFont(.label, weight: .regular, color: .Grays.gray500)
                     .lineLimit(1)
 
                 Spacer()

@@ -3,6 +3,7 @@ import SwiftUI
 import BaseFeature
 import ViewUtil
 import SignupFeatureInterface
+import FindPasswordFeatureInterface
 
 struct SigninView: View {
     private enum FocusField {
@@ -13,14 +14,17 @@ struct SigninView: View {
     @FocusState private var focusField: FocusField?
     @StateObject var viewModel: SigninViewModel
 
-    private let signupEmailVerifyFactory: any SignupEmailVerifyFactory
+    private let signupEmailFactory: any SignupEmailFactory
+    private let inputEmailFactory: any InputEmailFactory
 
     init(
         viewModel: SigninViewModel,
-        signupEmailVerifyFactory: any SignupEmailVerifyFactory
+        signupEmailFactory: any SignupEmailFactory,
+        inputEmailFactory: any InputEmailFactory
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.signupEmailVerifyFactory = signupEmailVerifyFactory
+        self.signupEmailFactory = signupEmailFactory
+        self.inputEmailFactory = inputEmailFactory
     }
 
     var body: some View {
@@ -64,16 +68,31 @@ struct SigninView: View {
                     Color.Grays.gray700
                         .frame(width: 1, height: 16)
 
-                    Text("비밀번호 찾기")
-                        .kgFont(.label, weight: .regular, color: .Grays.gray700)
+                    Button(action: viewModel.findPasswordButtonDidTap) {
+                        Text("비밀번호 찾기")
+                            .kgFont(.label, weight: .regular, color: .Grays.gray700)
+                    }
                 }
             }
 
             Spacer()
         }
+<<<<<<< HEAD
         .navigate(to: signupEmailVerifyFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
         .onChange(of: viewModel.isSuccessToSignin) { _ in
             self.appState.sceneFlow = .main
         }
+=======
+        .hideKeyboardWhenTap()
+        .navigate(
+            to: signupEmailFactory.makeView().eraseToAnyView(),
+            when: $viewModel.isNavigatedToSignup
+        )
+        .navigate(
+            to: inputEmailFactory.makeView().eraseToAnyView()
+                .environment(\.rootPresentationMode, $viewModel.isNavigatedToFindPassword),
+            when: $viewModel.isNavigatedToFindPassword
+        )
+>>>>>>> origin/develop
     }
 }

@@ -6,6 +6,7 @@ final class SigninViewModel: BaseViewModel {
     @Published var password: String = ""
     @Published var isSuccessToSignin: Bool = false
     @Published var isNavigatedToSignup: Bool = false
+    @Published var isNavigatedToFindPassword: Bool = false
 
     func signinButtonDidTap() {
         self.isSuccessToSignin = true
@@ -13,5 +14,9 @@ final class SigninViewModel: BaseViewModel {
 
     func signupButtonDidTap() {
         self.isNavigatedToSignup = true
+    }
+
+    func findPasswordButtonDidTap() {
+        self.isNavigatedToFindPassword = true
     }
 }

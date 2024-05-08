@@ -2,5 +2,5 @@ import SwiftUI
 
 public protocol SignupNameFactory {
     associatedtype SomeView: View
-    func makeView() -> SomeView
+    func makeView(nextViewNavigateAction: @escaping () -> Void) -> SomeView
 }

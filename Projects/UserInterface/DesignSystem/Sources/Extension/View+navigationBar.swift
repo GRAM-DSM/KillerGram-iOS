@@ -7,15 +7,18 @@ public struct NavigationBarModifier: ViewModifier {
     private let navigationTitle: String
 
     private let hasBackButton: Bool
+    private let backAction: (() -> Void)?
     private let rightIcon: (icon: Icons, action: () -> Void)?
 
     init(
         navigationTitle: String,
         hasBackButton: Bool = false,
+        backAction: (() -> Void)?,
         rightIcon: (Icons, () -> Void)? = nil
     ) {
         self.navigationTitle = navigationTitle
         self.hasBackButton = hasBackButton
+        self.backAction = backAction
         self.rightIcon = rightIcon
     }
 
@@ -25,7 +28,11 @@ public struct NavigationBarModifier: ViewModifier {
                 HStack {
                     if hasBackButton {
                         Button {
-                            dismiss()
+                            if let backAction {
+                                backAction()
+                            } else {
+                                dismiss()
+                            }
                         } label: {
                             KGIcon(.chevronLeft)
                                 .frame(28)
@@ -63,24 +70,28 @@ public extension View {
     func navigationBar(
         navigationTitle: String = "",
         hasBackButton: Bool = false,
+        backAction: (() -> Void)? = nil,
         rightIcon: (Icons, () -> Void)? = nil
     ) -> some View {
         modifier(
             NavigationBarModifier(
                 navigationTitle: navigationTitle,
                 hasBackButton: hasBackButton,
+                backAction: backAction,
                 rightIcon: rightIcon
             )
         )
     }
 
     func navigationBackButton(
-        navigationTitle: String = ""
+        navigationTitle: String = "",
+        backAction: (() -> Void)? =  nil
     ) -> some View {
         modifier(
             NavigationBarModifier(
                 navigationTitle: navigationTitle,
-                hasBackButton: true
+                hasBackButton: true,
+                backAction: backAction
             )
         )
     }

@@ -10,6 +10,9 @@ import SignupFeature
 import SignupFeatureInterface
 import MainFeature
 import MainFeatureInterface
+import FindPasswordFeature
+import FindPasswordFeatureInterface
+>>>>>>> origin/develop
 
 public final class AppComponent: BootstrapComponent {
 //    private let _keychain: any Keychain
@@ -41,14 +44,17 @@ public extension AppComponent {
         SigninComponent(parent: self)
     }
     // Signup
-    var signupEmailVerifyFactory: any SignupEmailVerifyFactory {
-        SignupEmailVerifyComponent(parent: self)
+    var signupEmailFactory: any SignupEmailFactory {
+        SignupEmailComponent(parent: self)
     }
-    var signupEmailAuthCodeVerifyFactory: any SignupEmailAuthCodeVerifyFactory {
-        SignupEmailAuthCodeVerifyComponent(parent: self)
+    var signupVerifyAuthCode: any SignupVerifyAuthCodeFactory {
+        SignupVerifyAuthCodeComponent(parent: self)
     }
     var signupPasswordFactory: any SignupPasswordFactory {
         SignupPasswordComponent(parent: self)
+    }
+    var signupUserInfoFlowFactory: any SignupUserInfoFlowFactory {
+        SignupUserInfoFlowComponent(parent: self)
     }
     var signupNameFactory: any SignupNameFactory {
         SignupNameComponent(parent: self)
@@ -64,5 +70,14 @@ public extension AppComponent {
     }
     var mainFactory: any MainFactory {
         MainComponent(parent: self)
+    // Find Password
+    var inputEmailFactory: any InputEmailFactory {
+        InputEmailComponent(parent: self)
+    }
+    var verifyAuthCodeFactory: any VerifyAuthCodeFactory {
+        VerifyAuthCodeComponent(parent: self)
+    }
+    var inputNewPasswordFactory: any InputNewPasswordFactory {
+        InputNewPasswordComponent(parent: self)
     }
 }

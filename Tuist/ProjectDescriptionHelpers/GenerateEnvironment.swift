@@ -18,7 +18,7 @@ public extension GenerateEnvironment {
             return [.needle]
 
         case .dev:
-            return [.swiftLint, .needle]
+            return [.needle]
         }
     }
     var scripts: [TargetScript] {
