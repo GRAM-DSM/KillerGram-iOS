@@ -1,7 +1,7 @@
 import SwiftUI
 import DesignSystem
 
-enum AllDaySportType {
+enum AllDaySportType: CaseIterable {
     case tableTennis
     case health
     case baseBall
