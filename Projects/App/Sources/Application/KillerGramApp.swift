@@ -15,7 +15,6 @@ struct KillerGramApp: App {
     var body: some Scene {
         WindowGroup {
             AppComponent().makeRootView()
-                .eraseToAnyView()
                 .environmentObject(appState)
         }
     }

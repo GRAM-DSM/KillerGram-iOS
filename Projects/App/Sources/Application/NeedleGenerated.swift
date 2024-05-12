@@ -1,8 +1,9 @@
 
-import MainFeature
-import MainFeatureInterface
+
 import FindPasswordFeature
 import FindPasswordFeatureInterface
+import MainFeature
+import MainFeatureInterface
 import NeedleFoundation
 import RootFeature
 import RootFeatureInterface
@@ -353,12 +354,10 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
     registerProviderFactory("^->AppComponent->SignupStudentIDComponent", factorycca12bec445b4f4f6de7f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SignupGenderComponent", factory997eaa831d16af15eee5e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SignupCheckLevelComponent", factory5b23127e837152346fdae3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->SignupNameComponent", factory71e8fa7f4327b1e25ed0f47b58f8f304c97af4d5)
-    registerProviderFactory("^->AppComponent->SignupEmailVerifyComponent", factory3b1904c76335d70151ebf47b58f8f304c97af4d5)
-    registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SignupNameComponent", factory71e8fa7f4327b1e25ed0e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SignupUserInfoFlowComponent", factoryce6f8b9af5f65c8e334ef47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SignupEmailComponent", factory4d1ddf658c5970ef6b47f47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debccf47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->VerifyAuthCodeComponent", factoryed5ce75de1bf576b84adf47b58f8f304c97af4d5)
