@@ -8,7 +8,9 @@ public struct MainView: View {
             HStack(spacing: 0) {
                 KGImage(.smallLogo)
                     .frame(width: 154.5, height: 48)
+
                 Spacer()
+
                 Button {
 
                 } label: {
@@ -35,7 +37,8 @@ public struct MainView: View {
                 VStack(spacing: 8) {
                     Text("경기 기록")
                         .kgFont(.m3, weight: .regular, color: .Grays.gray800)
-                    VStack {
+
+                    VStack(spacing: 20) {
                     }
                 }
             }
