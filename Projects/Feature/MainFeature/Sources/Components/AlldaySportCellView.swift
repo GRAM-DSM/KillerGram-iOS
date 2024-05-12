@@ -17,6 +17,7 @@ public struct AlldaySportCellView: View {
                     allDaySportType.image
                         .frame(76)
                 }
+
             Text(allDaySportType.title)
                 .kgFont(.label, weight: .regular, color: .Grays.gray400)
         }
