@@ -77,12 +77,6 @@ struct SigninView: View {
 
             Spacer()
         }
-<<<<<<< HEAD
-        .navigate(to: signupEmailVerifyFactory.makeView().eraseToAnyView(), when: $viewModel.isNavigatedToSignup)
-        .onChange(of: viewModel.isSuccessToSignin) { _ in
-            self.appState.sceneFlow = .main
-        }
-=======
         .hideKeyboardWhenTap()
         .navigate(
             to: signupEmailFactory.makeView().eraseToAnyView(),
@@ -93,6 +87,8 @@ struct SigninView: View {
                 .environment(\.rootPresentationMode, $viewModel.isNavigatedToFindPassword),
             when: $viewModel.isNavigatedToFindPassword
         )
->>>>>>> origin/develop
+        .onChange(of: viewModel.isSuccessToSignin) { _ in
+            self.appState.sceneFlow = .main
+        }
     }
 }

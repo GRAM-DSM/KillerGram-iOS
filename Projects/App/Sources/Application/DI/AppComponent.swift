@@ -12,7 +12,6 @@ import MainFeature
 import MainFeatureInterface
 import FindPasswordFeature
 import FindPasswordFeatureInterface
->>>>>>> origin/develop
 
 public final class AppComponent: BootstrapComponent {
 //    private let _keychain: any Keychain
@@ -70,6 +69,7 @@ public extension AppComponent {
     }
     var mainFactory: any MainFactory {
         MainComponent(parent: self)
+    }
     // Find Password
     var inputEmailFactory: any InputEmailFactory {
         InputEmailComponent(parent: self)
